@@ -76,15 +76,19 @@ function loadProducts() {
 			{
 			  var imgList= "<ul class=\"products\">";
 			  
-			 if(rehanygbaik === 'IDR'){
+			 if(rehanygbaik === 'Indonesia Rupiah'){
 				$.each(json.products, function () {
-					imgList += '<li><img src= "' + this.imgPath + '"><h3>' + this.name + '</h3><h3>' + this.IDR + '</h3></li>';
+					imgList += '<li><img src= "' + this.imgPath + '"><h3>' + this.name + '</h3><h3>' + ' Rp.' + `${this.IDR*this.RPrate}`+'</h3></li>';
 				  });
-			 }else if(rehanygbaik === 'USD'){
+			 }else if(rehanygbaik === 'American Dollar'){
 				$.each(json.products, function () {
-					imgList += '<li><img src= "' + this.imgPath + '"><h3>' + this.name + '</h3><h3>' + this.USD + '</h3></li>';
+					imgList += '<li><img src= "' + this.imgPath + '"><h3>' + this.name + '</h3><h3>' + ' US$ '+ `${(this.IDR*this.USDrate).toFixed(2)}`+'</h3><h3>' + '</h3></li>';
 				  });
-			 }else{
+			 }else if(rehanygbaik === 'Singapore Dollar'){
+				$.each(json.products, function () {
+					imgList += '<li><img src= "' + this.imgPath + '"><h3>' + this.name + '</h3><h3>' + ' S$ '+ `${(this.IDR*this.SGDrate).toFixed(2)}`+'</h3><h3>' + '</h3></li>';
+				  });
+			}else{
 				$.each(json.products, function () {
 					imgList += '<li><img src= "' + this.imgPath + '"><h3>' + this.name + '</h3></li>';
 				  });
